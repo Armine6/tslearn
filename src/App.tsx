@@ -1,26 +1,16 @@
 import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from './hooks';
 import { fetchUser } from './store/action-creators/fetchUser';
+import UserList from './components/UserList';
+import TodosLists from './components/TodosLists';
 
 
 function App() {
-  const {error,loading,users} = useAppSelector(state => state.userReducer)
-  const dispatch = useAppDispatch()
-
-  useEffect(()=>{
-    dispatch(fetchUser())
-  })
-  return (
-   <div>
-    {users.map((user)=>{
-      const {id,name,email} = user
-      return <div>
-        <div key={id}>{name}</div>
-        <p>{email}</p>
-        </div>
-    })}
-   </div>
-  );
+ return <div>
+  <UserList/>
+  <br/>
+  <TodosLists/>
+ </div>
 }
 
 export default App;
